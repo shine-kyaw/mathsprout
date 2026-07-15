@@ -7,6 +7,10 @@ import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <I18nProvider><BrowserRouter><App /></BrowserRouter></I18nProvider>
+    <I18nProvider>
+  <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <App />
+  </BrowserRouter>
+</I18nProvider>
   </StrictMode>,
 )
