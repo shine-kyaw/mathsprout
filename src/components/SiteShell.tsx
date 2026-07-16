@@ -15,6 +15,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
   const menuButton = useRef<HTMLButtonElement>(null)
   const mobileNav = useRef<HTMLElement>(null)
   const location = useLocation()
+  const logo = `${import.meta.env.BASE_URL}mathsprout-logo.jpeg`
   useEffect(() => {
     setOpen(false)
     window.scrollTo({ top: 0, behavior: 'auto' })
@@ -45,7 +46,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <header className="site-header">
       <div className="shell nav-shell">
         <NavLink to="/" className="brand-link" aria-label={t('a11y.home')}>
-          <span className="brand-mark" aria-hidden="true" /><span>MathSprout</span>
+          <span className="brand-mark" aria-hidden="true"><img src={logo} alt="" /></span><span>MathSprout</span>
         </NavLink>
         <nav className="desktop-nav" aria-label={t('a11y.primaryNav')}>
           {nav.map(([to, key]) => <NavLink key={to} to={to} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{t(key)}</NavLink>)}
@@ -67,7 +68,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <main id="main" tabIndex={-1}>{children}</main>
     <footer className="site-footer">
       <div className="shell footer-grid">
-        <div><span className="brand-mark" aria-hidden="true" /><strong>MathSprout</strong><p>{t('footer.line')}</p></div>
+        <div><span className="brand-mark" aria-hidden="true"><img src={logo} alt="" /></span><strong>MathSprout</strong><p>{t('footer.line')}</p></div>
         <div><span className="status-dot" />{t('footer.status')}</div>
         <div className="footer-links">{nav.slice(0, 5).map(([to, key]) => <NavLink key={to} to={to}>{t(key)}</NavLink>)}</div>
       </div>
